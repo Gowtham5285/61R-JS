@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #000000, #1a0000, #330000);
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden;
+        }
+
+        div {
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 3px;
+            color: red;
+            text-shadow: 0 0 10px red, 0 0 25px orange, 0 0 50px yellow;
+            animation: pulse 1.2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { text-shadow: 0 0 10px red, 0 0 25px orange; }
+            to { text-shadow: 0 0 20px yellow, 0 0 60px red; }
+        }
+
+        img {
+            width: 300px;
+            height: auto;
+            margin: 20px 0;
+            border: 3px solid red;
+            border-radius: 10px;
+            box-shadow: 0 0 25px red;
+            animation: flicker 0.8s infinite alternate;
+        }
+
+        @keyframes flicker {
+            from { opacity: 0.9; box-shadow: 0 0 10px red; }
+            to { opacity: 1; box-shadow: 0 0 30px orange; }
+        }
+
+        p {
+            font-size: 2rem;
+            background: black;
+            padding: 10px 20px;
+            border: 2px solid red;
+            border-radius: 8px;
+            width: fit-content;
+            margin: 0 auto;
+            color: lime;
+            text-shadow: 0 0 5px lime, 0 0 10px green;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div>
+            <h1>Bomb Blast</h1>
+            <img src="https://t3.ftcdn.net/jpg/13/99/31/68/360_F_1399316872_t3Bgcci7Ju6tpBzFEDjdcPoornTmzS7d.jpg" alt="" id="image">
+            <p id="timer">Time left: 10</p>
+        </div>
+    </div>
+    <script src="new2_bomb_blast.js"></script>
+</body>
+</html>

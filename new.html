@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess The Number</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      padding: 40px 50px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      width: 350px;
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-5px);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2em;
+      letter-spacing: 1px;
+    }
+
+    input[type="text"] {
+      padding: 12px 15px;
+      width: 80%;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      font-size: 1em;
+      text-align: center;
+      margin-bottom: 20px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #00c6ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #0072ff;
+    }
+
+    /* Optional message styling */
+    #result {
+      margin-top: 20px;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Guess A Number 🎯</h1>
+    <input id="input" type="text" id="userInput" placeholder="Enter a number...">
+    <br>
+    <button onclick="guess()">Guess</button>
+    <p id="result"></p>
+    <p id="chances"></p>
+    <div id="result"></div>
+  </div>
+
+  <script src="new_guess_number.js"></script>
+</body>
+</html>
