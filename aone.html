@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2025 Anime Releases</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #0f0f0f;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    #anime-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .anime-card {
+      background: #1c1c1c;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      transition: transform 0.2s ease;
+      cursor: pointer;
+      width: 220px;
+    }
+
+    .anime-card:hover {
+      transform: scale(1.05);
+    }
+
+    .anime-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .anime-info {
+      padding: 10px;
+    }
+
+    .anime-info h2 {
+      font-size: 18px;
+      margin: 0;
+      color: #fff;
+    }
+
+    .anime-info p {
+      color: #ccc;
+      margin: 4px 0;
+      font-size: 14px;
+    }
+
+    /* Modal Styles */
+    #modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #modal-content {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 90%;
+      color: #fff;
+      overflow-y: auto;
+      max-height: 90vh;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+
+    #modal-content img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    #close-btn {
+      background: #ff4747;
+      border: none;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      float: right;
+    }
+
+    #close-btn:hover {
+      background: #ff3030;
+    }
+
+    .anime-detail p {
+      margin: 6px 0;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎬 Anime Releases — 2025</h1>
+  <div id="anime-grid">Loading...</div>
+
+  <!-- Modal -->
+  <div id="modal">
+    <div id="modal-content">
+      <button id="close-btn">Close</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script>
+    const grid = document.getElementById("anime-grid");
+    const modal = document.getElementById("modal");
+    const modalBody = document.getElementById("modal-body");
+    const closeBtn = document.getElementById("close-btn");
+
+    closeBtn.addEventListener("click", () => (modal.style.display = "none"));
+
+    async function fetchAnime2025() {
+      try {
+        const res = await fetch("https://api.jikan.moe/v4/anime?start_date=2025-01-01&end_date=2025-12-31&order_by=popularity&limit=24");
+        const data = await res.json();
+        const animeList = data.data;
+
+        grid.innerHTML = "";
+
+        animeList.forEach(anime => {
+          const card = document.createElement("div");
+          card.classList.add("anime-card");
+
+          const img = document.createElement("img");
+          img.src = anime.images?.jpg?.image_url || "https://via.placeholder.com/220x300?text=No+Image";
+          card.appendChild(img);
+
+          const info = document.createElement("div");
+          info.classList.add("anime-info");
+
+          const title = document.createElement("h2");
+          title.textContent = anime.title;
+          info.appendChild(title);
+
+          const studio = document.createElement("p");
+          studio.textContent = anime.studios[0]?.name ? "Studio: " + anime.studios[0].name : "Studio: N/A";
+          info.appendChild(studio);
+
+          const year = document.createElement("p");
+          year.textContent = "Year: " + (anime.year || "Unknown");
+          info.appendChild(year);
+
+          card.appendChild(info);
+          grid.appendChild(card);
+
+          // Add click listener for modal
+          card.addEventListener("click", () => showAnimeDetails(anime.mal_id));
+        });
+      } catch (err) {
+        grid.textContent = "⚠️ Failed to fetch anime data.";
+        console.error(err);
+      }
+    }
+
+    async function showAnimeDetails(id) {
+      modal.style.display = "flex";
+      modalBody.innerHTML = "<p>Loading details...</p>";
+
+      try {
+        const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/full`);
+        const data = await res.json();
+        const anime = data.data;
+
+        modalBody.innerHTML = `
+          <img src="${anime.images?.jpg?.large_image_url}" alt="${anime.title}" />
+          <h2>${anime.title}</h2>
+          <p><strong>Japanese Title:</strong> ${anime.title_japanese || "N/A"}</p>
+          <p><strong>Episodes:</strong> ${anime.episodes || "Unknown"}</p>
+          <p><strong>Type:</strong> ${anime.type}</p>
+          <p><strong>Status:</strong> ${anime.status}</p>
+          <p><strong>Genres:</strong> ${anime.genres.map(g => g.name).join(", ") || "N/A"}</p>
+          <p><strong>Score:</strong> ${anime.score || "N/A"}</p>
+          <p><strong>Synopsis:</strong> ${anime.synopsis || "No synopsis available."}</p>
+          ${anime.trailer?.url ? `<p><a href="${anime.trailer.url}" target="_blank" style="color:#00bfff;">🎥 Watch Trailer</a></p>` : ""}
+        `;
+      } catch (err) {
+        modalBody.innerHTML = "<p>Failed to load details.</p>";
+        console.error(err);
+      }
+    }
+
+    fetchAnime2025();
+  </script>
+</body>
+</html>
