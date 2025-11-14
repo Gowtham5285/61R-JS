@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Trailer Append</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        #trailer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Salaar Trailer</h2>
+
+    <button onclick="loadTrailer()">Load Trailer</button>
+
+    <div id="trailer"></div>
+
+    <script>
+        function loadTrailer() {
+            document.getElementById("trailer").innerHTML = `
+                <iframe width="560" height="315" 
+                    src="https://www.youtube.com/embed/4GPvYMKtrtI?si=Q6Yn8PkMhER3buPy"
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
+            `;
+        }
+    </script>
+ 
+</body>
+</html>
