@@ -1,11 +1,22 @@
 let table = document.getElementById("table")
 let username = document.getElementById("username")
 let age = document.getElementById("age")
-let city = document.getElementById("city")
-let arr = JSON.parse(localStorage.getItem("data"));
-let del=document.getElementById("del")
+let city = document.getElementById("city");
+let del = document.getElementById("del")
+let update = document.getElementById("update")
+let updBtn = document.getElementById("updBtn")
+let search=document.getElementById("search")
 // console.log(arr)
-
+function getData() {
+    let data = localStorage.getItem("data")
+    if (data == null) {
+        return []
+    }
+    else {
+        return JSON.parse(data)
+    }
+}
+let arr = getData()
 function createTableHeader() {
     let tr = document.createElement("tr")
     table.appendChild(tr)
@@ -60,29 +71,65 @@ function addBtn() {
     city.value = "";
 }
 
-function deleteBtn(){
-    if(del.value==""){
+function deleteBtn() {
+    if (del.value == "") {
         alert("Please Enter the value to delete")
         return
     }
     let indexValue;
-    for(let i of arr){
-        if(i["username"]==del.value){
-            indexValue=arr.indexOf(i)
+    for (let i of arr) {
+        if (i["username"] == del.value) {
+            indexValue = arr.indexOf(i)
         }
     }
-    if(indexValue==undefined){
+    if (indexValue == undefined) {
         alert("Username is not found")
-        del.value=""
+        del.value = ""
         return
     }
-    arr.splice(indexValue,1)
-    localStorage.setItem("data",JSON.stringify(arr))
-    table.textContent="";
+    arr.splice(indexValue, 1)
+    localStorage.setItem("data", JSON.stringify(arr))
+    table.textContent = "";
     createTableHeader();
-    for(let i of arr){
-        createTableData(i["username"],i["age"],i["city"])
+    for (let i of arr) {
+        createTableData(i["username"], i["age"], i["city"])
     }
-    del.value=""
-    
+    del.value = ""
+
+}
+let indexValue;
+function updateBtn() {
+    if (update.value == "") {
+        alert("Enter the valid input")
+        return
+    }
+    if (updBtn.textContent == "Save") {
+        let new_obj = {
+            "username": username.value,
+            "age": age.value,
+            "city": city.value
+        }
+        arr.splice(indexValue, 1, new_obj)
+        localStorage.setItem("data", JSON.stringify(arr))
+        table.textContent = ""
+        createTableHeader()
+        for (let i of arr) {
+            createTableData(i["username"], i["age"], i["city"])
+        }
+        username.value = "";
+        age.value = "";
+        city.value = "";
+        updBtn.textContent = "Update"
+        return
+    }
+    for (let i of arr) {
+        if (update.value == i["username"]) {
+            indexValue = arr.indexOf(i)
+            username.value = i["username"]
+            age.value = i["age"]
+            city.value = i["city"]
+
+        }
+    }
+    updBtn.textContent = "Save"
 }
