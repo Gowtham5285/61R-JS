@@ -1,0 +1,1 @@
+document.writeln("<h1>Hello World</h1> <ul><li><h1>Naruto</h1></li><li></li></ul>");
