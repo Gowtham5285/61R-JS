@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Premium Productivity Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>ProdDash</h1>
+      <small>Productivity Dashboard</small>
+    </div>
+
+    <div class="controls">
+      <select id="themeSelect" title="Choose theme">
+        <option value="default">Default</option>
+        <option value="gradient">Gradient</option>
+        <option value="minimal">Minimal</option>
+        <option value="amoled">AMOLED</option>
+      </select>
+
+      <button id="addStickyBtn" title="Add sticky note">+ Sticky</button>
+      <button id="exportBtn" title="Export data">Export</button>
+      <button id="importBtn" title="Import data (paste JSON)">Import</button>
+      <button id="clearAllBtn" title="Clear everything">Clear</button>
+    </div>
+  </header>
+
+  <main class="grid">
+    <!-- LEFT: Tasks + Toolbar -->
+    <section class="card column left-col">
+      <div class="card-head">
+        <h2>Tasks</h2>
+        <div class="task-toolbar">
+          <input id="taskFilterText" placeholder="Search tasks..." />
+          <select id="filterCategory"><option value="all">All categories</option></select>
+          <select id="filterPriority"><option value="all">All priorities</option><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select>
+        </div>
+      </div>
+
+      <form id="taskForm" class="task-form">
+        <input id="taskTitle" placeholder="Task title" required />
+        <div class="row">
+          <select id="taskCategory" required>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Study">Study</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <input type="date" id="taskDue" />
+          <select id="taskPriority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+
+          <button type="submit" id="addTaskBtn">Add</button>
+        </div>
+      </form>
+
+      <ul id="taskList" class="task-list" aria-live="polite"></ul>
+    </section>
+
+    <!-- RIGHT: Tools -->
+    <aside class="card column right-col">
+      <div class="card-head">
+        <h2>Tools</h2>
+      </div>
+
+      <!-- Pomodoro -->
+      <div class="tool card-sm" id="pomodoroCard">
+        <h3>Pomodoro Timer</h3>
+        <div class="pomodoro-display">
+          <div id="pomTime">25:00</div>
+          <div class="pom-controls">
+            <button id="pomStart">Start</button>
+            <button id="pomPause">Pause</button>
+            <button id="pomReset">Reset</button>
+          </div>
+        </div>
+        <div class="pom-setup row">
+          <label>Work</label><input type="number" id="workMin" min="1" value="25" />m
+          <label>Break</label><input type="number" id="breakMin" min="1" value="5" />m
+        </div>
+      </div>
+
+      <!-- Goal Tracker -->
+      <div class="tool card-sm" id="goalCard">
+        <h3>Daily Goal</h3>
+        <input id="dailyGoalInput" type="text" placeholder="Write today's goal" />
+        <div class="progress-wrap">
+          <div id="goalProgressBar"></div>
+        </div>
+        <div class="row small">
+          <input id="goalTarget" type="number" min="1" value="3" /> target tasks
+          <button id="goalCheck">Mark progress</button>
+          <button id="goalReset">Reset</button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="tool card-sm" id="statsCard">
+        <h3>Stats</h3>
+        <div class="stat"><span id="statToday">0</span><small>Completed today</small></div>
+        <div class="stat"><span id="statTotal">0</span><small>Total completed</small></div>
+        <div class="stat"><span id="statPct">0%</span><small>Completion %</small></div>
+      </div>
+
+      <!-- Markdown Notes -->
+      <div class="tool card-sm" id="mdCard">
+        <h3>Markdown Notes</h3>
+        <textarea id="mdInput" placeholder="Write markdown..."></textarea>
+        <div id="mdPreview" class="md-preview"></div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Sticky note container -->
+  <div id="stickiesContainer"></div>
+
+  <!-- Import modal -->
+  <div id="importModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Import JSON</h3>
+      <textarea id="importArea" placeholder='Paste exported JSON here'></textarea>
+      <div class="row">
+        <button id="runImport">Import</button>
+        <button id="cancelImport">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <small>Built with HTML · CSS · JS • Local-first demo</small>
+  </footer>
+
+  <audio id="dingSound">
+    <source src="" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

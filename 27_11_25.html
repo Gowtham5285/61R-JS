@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Welcome To the Youtube</p>
+    <button onclick="subscribe()">Subscribe</button>
+    <p>Amazon Shopping Calculator</p>
+    <input type="text" placeholder="Enter the Cost of an item" class="input-c" onkeydown="
+    if(event.key=== 'Enter'){
+        calculate()
+    }">
+    <button onclick="calculate()" >Calculate</button>
+    <p class="js-amazon"></p>
+    <script>
+        function calculate(){
+            const Element=document.querySelector(".input-c")
+            let cal = Number(Element.value)
+            if (cal<100){
+                cal = cal +10;
+                
+            }
+            document.querySelector(".js-amazon").innerHTML=`${cal}/-`
+        }
+        function subscribe(){
+            const element=document.querySelector("button")
+            if(element.innerHTML==="Subscribe"){
+                element.innerHTML="Subscribed"
+            }
+            else{
+                element.innerHTML="Subscribe"
+            }
+        }
+    </script>
+</body>
+</html>

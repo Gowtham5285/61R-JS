@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Function Declaration
+        function sayHello() {
+            console.log("Hello!");
+        }
+
+        // Function Expression
+        const sayHi = function () {
+            console.log("Hi!");
+        };
+
+        // Arrow Function
+        const sayBye = () => console.log("Bye!");
+
+        // Callback Function
+        function execute(callback) {
+            callback();
+        }
+
+        // Using callback
+        execute(sayHello);
+        sayBye();
+        sayHi();
+
+    </script>
+</body>
+
+</html>

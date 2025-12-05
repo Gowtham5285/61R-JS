@@ -1,0 +1,509 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --bg: #ffffff;
+    --card: #f3f3f3;
+    --text: #222;
+}
+
+body.dark {
+    --bg: #1e1e1e;
+    --card: #2c2c2c;
+    --text: #fff;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.3s;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#themeToggle {
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    border: none;
+    background: var(--card);
+    border-radius: 6px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#taskInput {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+#addTaskBtn {
+    padding: 10px 15px;
+    border: none;
+    background: #4b7bec;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    background: var(--bg);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li.done {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+:root {
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --muted: #6b7280;
+    --accent: #4b7bec;
+    --low: #60a5fa;
+    --med: #f59e0b;
+    --high: #f43f5e;
+    --glass: rgba(255, 255, 255, 0.6);
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: var(--bg);
+    color: #111;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    border-bottom: 1px solid #e6e9ef;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 18px
+}
+
+.controls {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.controls button,
+.controls select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 20px;
+    padding: 20px;
+    flex: 1
+}
+
+.card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 6px 18px rgba(18, 38, 63, 0.06)
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+}
+
+.left-col {
+    min-width: 280px
+}
+
+.card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.task-toolbar {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.task-toolbar input {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0
+}
+
+.task-form input,
+.task-form select {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0
+}
+
+.task-form .row {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px
+}
+
+#addTaskBtn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 60vh;
+    overflow: auto
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #eef2f7;
+    background: linear-gradient(180deg, #fff, #fbfdff);
+    transition: transform .15s ease, opacity .2s
+}
+
+.task-item.dragging {
+    opacity: 0.6;
+    transform: scale(0.98)
+}
+
+.task-left {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex: 1;
+    min-width: 0
+}
+
+.task-left span.title {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.task-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 12px
+}
+
+.badge.low {
+    background: var(--low);
+    color: #063;
+    opacity: 0.95
+}
+
+.badge.medium {
+    background: var(--med);
+    color: #fff
+}
+
+.badge.high {
+    background: var(--high);
+    color: #fff
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+    margin-left: 12px
+}
+
+.icon-btn {
+    background: transparent;
+    border: 1px solid #e6eefc;
+    padding: 6px;
+    border-radius: 8px;
+    cursor: pointer
+}
+
+.task-item.done {
+    opacity: 0.6;
+    text-decoration: line-through;
+    background: linear-gradient(180deg, #f3f7ff, #f9fbff)
+}
+
+.due-soon {
+    box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.06)
+}
+
+.small {
+    font-size: 12px;
+    color: var(--muted)
+}
+
+.card-sm {
+    padding: 10px
+}
+
+.pomodoro-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+#pomTime {
+    font-size: 28px;
+    font-weight: 700
+}
+
+.pom-controls button {
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    margin-left: 6px
+}
+
+.pom-setup input {
+    width: 60px;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb
+}
+
+.progress-wrap {
+    height: 12px;
+    background: #eef2f7;
+    border-radius: 999px;
+    margin: 10px 0;
+    overflow: hidden
+}
+
+#goalProgressBar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #60a5fa, #4b7bec)
+}
+
+.tool {
+    margin-bottom: 8px
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 6px;
+    border-bottom: 1px dashed #f0f4f8
+}
+
+.md-preview {
+    border: 1px solid #eef2f7;
+    padding: 10px;
+    border-radius: 8px;
+    min-height: 80px;
+    background: #fff;
+    overflow: auto
+}
+
+#mdInput {
+    width: 100%;
+    height: 80px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid #eef2f7
+}
+
+/* sticky notes */
+#stickiesContainer {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 80;
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+}
+
+.sticky {
+    width: 200px;
+    min-height: 120px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.12);
+    position: relative;
+    resize: both;
+    overflow: auto;
+    border: 1px solid #eaeef6
+}
+
+.sticky .sticky-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px
+}
+
+.sticky .colorp {
+    display: flex;
+    gap: 6px
+}
+
+.color-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #ddd
+}
+
+.sticky textarea {
+    width: 100%;
+    height: 100px;
+    border: none;
+    outline: none;
+    background: transparent;
+    resize: none
+}
+
+/* modal */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(2, 6, 23, 0.4);
+    z-index: 120
+}
+
+.modal.hidden {
+    display: none
+}
+
+.modal-content {
+    background: #fff;
+    padding: 12px;
+    border-radius: 10px;
+    width: 420px
+}
+
+.modal textarea {
+    width: 100%;
+    height: 160px
+}
+
+/* responsive */
+@media (max-width:960px) {
+    .grid {
+        grid-template-columns: 1fr;
+        padding: 12px
+    }
+
+    #stickiesContainer {
+        right: 12px;
+        bottom: 12px
+    }
+}
+
+
+li button {
+    border: none;
+    background: #ff4d4d;
+    padding: 5px 10px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+}
+
+#notes {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: var(--bg);
+    color: var(--text);
+}

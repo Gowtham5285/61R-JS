@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Propagation Demo</title>
+  <style>
+    .container {
+      background: lightblue;
+      padding: 30px;
+    }
+    .box {
+      background: lightgreen;
+      padding: 30px;
+    }
+    .button {
+      background: orange;
+      padding: 15px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    CONTAINER
+    <div class="box">
+      BOX
+      <button class="button">Click Me</button>
+    </div>
+  </div>
+
+  <script>
+    // 1️⃣ Event Listener on container
+    document.querySelector(".container").addEventListener("click", () => {
+      console.log("Container Clicked");
+    }, true);  // Change to true to test capturing
+
+    // 2️⃣ Event Listener on box
+    document.querySelector(".box").addEventListener("click", (e) => {
+        // e.stopPropagation()
+      console.log("Box Clicked");
+      // e.stopPropagation();  // Uncomment to test stopPropagation()
+    }, { capture: true, once: true });  // Change to true to test capturing
+
+    // 3️⃣ Event Listener on button
+    document.querySelector(".button").addEventListener("click", (e) => {
+      console.log("Button Clicked");
+      // e.stopPropagation();  // Uncomment to stop event spreading
+    }, true);  // Change to true to test capturing
+
+    // 💡 Use your browser console to see the output
+  </script>
+
+</body>
+</html>
