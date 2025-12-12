@@ -1,51 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Document</title>
     <style>
-        .container{
+        .container {
             margin: 0;
             border: 1px solid;
             border-radius: 10px;
             padding: 10px;
         }
-        .container>div{
-             margin: 10px 10px;
+
+        .container>div {
+            margin: 10px 10px;
             border: 1px solid;
             border-radius: 10px;
             padding: 10px;
             background-color: hsla(0, 0%, 50%, 0.781);
         }
-        .container>div>h1{
+
+        .container>div>h1 {
             margin: 0;
             text-align: center;
             color: red;
 
         }
-        .container>div>h3{
+
+        .container>div>h3 {
             margin: 0;
-            text-align: center; 
+            text-align: center;
             font-family: arial;
             color: red;
         }
-        .container>div>p{
+
+        .container>div>p {
             margin: 0;
             text-align: center;
             font-family: sans-serif;
             color: red;
         }
-        .container>div>button{
+
+        .container>div>button {
             padding: 10px;
             margin: auto 45%;
             border-radius: 10px;
         }
+        .post>input{
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            color: black;
+            max-width: 400px;
+            background-color: hsla(0, 4%, 63%, 0.2);
+        }
+        .post>button{
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+        }
     </style>
 </head>
+
 <body>
+    <div class="post">
+        <input type="text" >
+        <input type="text">
+        <button>Submit</button>
+    </div>
     <div class="container" id="container"></div>
     <script src="./day3.js"></script>
 </body>
+
 </html>

@@ -1,21 +1,6 @@
 {
   "quotes": [
     {
-      "id": "2",
-      "quote": "The Bay of Bengal is hit frequently by cyclones. The months of November and May, in particular, are dangerous in this regard.",
-      "author": "Abdul Kalam"
-    },
-    {
-      "id": "3",
-      "quote": "Thinking is the capital, Enterprise is the way, Hard Work is the solution.",
-      "author": "Abdul Kalam"
-    },
-    {
-      "id": "4",
-      "quote": "If You Can'T Make It Good, At Least Make It Look Good.",
-      "author": "Bill Gates"
-    },
-    {
       "id": "5",
       "quote": "Heart be brave. If you cannot be brave, just go. Love's glory is not a small thing.",
       "author": "Rumi"
@@ -39,11 +24,6 @@
       "id": "9",
       "quote": "While children are struggling to be unique, the world around them is trying all means to make them look like everybody else.",
       "author": "Abdul Kalam"
-    },
-    {
-      "id": "10",
-      "quote": "These Capitalists Generally Act Harmoniously And In Concert, To Fleece The People.",
-      "author": "Abraham Lincoln"
     },
     {
       "id": "12",
@@ -139,6 +119,18 @@
       "id": "30",
       "quote": "Life is a gamble. You can get hurt, but people die in plane crashes, lose their arms and legs in car accidents; people die every day. Same with fighters: some die, some get hurt, some go on. You just don't let yourself believe it will happen to you.",
       "author": "Muhammad Ali"
+    }
+  ],
+  "delete": [
+    {
+      "id": "4",
+      "quote": "If You Can'T Make It Good, At Least Make It Look Good.",
+      "author": "Bill Gates"
+    },
+    {
+      "id": "10",
+      "quote": "These Capitalists Generally Act Harmoniously And In Concert, To Fleece The People.",
+      "author": "Abraham Lincoln"
     }
   ]
 }
