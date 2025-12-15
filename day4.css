@@ -1,0 +1,94 @@
+body {
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Main card */
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* FORM container */
+.input-container {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+/* Input field */
+#todo-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-right: none; /* seamless with button */
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+#todo-input:focus {
+    border-color: #007bff;
+}
+
+/* Add button */
+#add-button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+}
+
+#add-button:hover {
+    background-color: #0056b3;
+}
+
+/* Todo list */
+#todo-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Individual task */
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Completed task */
+.task.completed p {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* Delete button */
+.task button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.task button:hover {
+    background-color: #c82333;
+}
