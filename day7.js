@@ -51,3 +51,10 @@ login("sudheer", 1234)
     .then(res => console.log(res))
     .catch(err => console.error(err))
     .finally(() => console.log("Thank You visit Again"))
+
+
+
+    async function abc(){
+        let a=await login("sudheer",12345)
+        console.log(a)
+    }
