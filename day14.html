@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anime Merch Store</title>
+  <link rel="stylesheet" href="day14.css" />
+</head>
+<body>
+
+<header class="navbar">
+  <h1 class="logo">🎌 AnimeVerse Merch</h1>
+
+  <div class="nav-right">
+    <input id="searchInput" type="text" placeholder="🔍 Search products">
+    <select id="categoryFilter">
+      <option value="all">All</option>
+      <option value="figure">Figures</option>
+      <option value="hoodie">Hoodies</option>
+      <option value="poster">Posters</option>
+      <option value="accessory">Accessories</option>
+    </select>
+
+    <button id="cartBtn">🛒 Cart (<span id="cartCount">0</span>)</button>
+  </div>
+</header>
+
+<section class="hero">
+  <h2>🔥 Premium Anime Collectibles</h2>
+  <p>Figures • Hoodies • Posters • Keychains</p>
+  <button class="cta-btn">Shop Now</button>
+</section>
+
+<section class="products">
+  <h2 class="section-title">Trending Anime Merch</h2>
+
+  <div class="product-grid" id="productGrid"></div>
+</section>
+
+<!-- Cart Popup -->
+<div class="cart-popup" id="cartBox">
+  <h3>🛒 Cart Items</h3>
+  <ul id="cartItems"></ul>
+  <button id="closeCart">Close</button>
+</div>
+
+<footer>
+  <p>© 2025 AnimeVerse Store • Built with ❤️</p>
+</footer>
+
+<script src="day14.js"></script>
+</body>
+</html>
