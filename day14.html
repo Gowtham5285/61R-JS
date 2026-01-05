@@ -1,53 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anime Merch Store</title>
-  <link rel="stylesheet" href="day14.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Appointment Booking</title>
+
+<link rel="stylesheet" href="./assets/css/base.css" />
+
+<style>
+body {
+  font-family: Poppins, sans-serif;
+  background: #f3f6ff;
+  margin: 0;
+  padding: 40px;
+}
+
+.container {
+  max-width: 650px;
+  margin: auto;
+  background: #ffffff;
+  padding: 28px 30px;
+  border-radius: 14px;
+  box-shadow: 0 20px 35px rgba(0,0,0,0.08);
+}
+
+h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.form-group { margin-bottom: 14px; }
+label { display: block; font-size: 14px; margin-bottom: 6px; }
+input, select, textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #cfd4e3;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  background: #4a6cf7;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover { opacity: 0.92; }
+
+.success { color: green; margin-top: 10px; display: none; }
+.error { color: red; margin-top: 10px; display: none; }
+</style>
 </head>
+
 <body>
+<div class="container">
+  <h2>Book an Appointment</h2>
 
-<header class="navbar">
-  <h1 class="logo">🎌 AnimeVerse Merch</h1>
+  <form id="appointmentForm">
+    <div class="form-group">
+      <label>Patient Name</label>
+      <input type="text" id="patientName" required />
+    </div>
 
-  <div class="nav-right">
-    <input id="searchInput" type="text" placeholder="🔍 Search products">
-    <select id="categoryFilter">
-      <option value="all">All</option>
-      <option value="figure">Figures</option>
-      <option value="hoodie">Hoodies</option>
-      <option value="poster">Posters</option>
-      <option value="accessory">Accessories</option>
-    </select>
+    <div class="form-group">
+      <label>Select Doctor</label>
+      <select id="doctorSelect" required></select>
+    </div>
 
-    <button id="cartBtn">🛒 Cart (<span id="cartCount">0</span>)</button>
-  </div>
-</header>
+    <div class="form-group">
+      <label>Date</label>
+      <input type="date" id="date" required />
+    </div>
 
-<section class="hero">
-  <h2>🔥 Premium Anime Collectibles</h2>
-  <p>Figures • Hoodies • Posters • Keychains</p>
-  <button class="cta-btn">Shop Now</button>
-</section>
+    <div class="form-group">
+      <label>Time</label>
+      <input type="time" id="time" required />
+    </div>
 
-<section class="products">
-  <h2 class="section-title">Trending Anime Merch</h2>
+    <div class="form-group">
+      <label>Reason (optional)</label>
+      <textarea id="reason"></textarea>
+    </div>
 
-  <div class="product-grid" id="productGrid"></div>
-</section>
+    <button type="submit">Book Appointment</button>
 
-<!-- Cart Popup -->
-<div class="cart-popup" id="cartBox">
-  <h3>🛒 Cart Items</h3>
-  <ul id="cartItems"></ul>
-  <button id="closeCart">Close</button>
+    <p class="success" id="successMsg">Appointment booked successfully!</p>
+    <p class="error" id="errorMsg">Something went wrong.</p>
+  </form>
 </div>
 
-<footer>
-  <p>© 2025 AnimeVerse Store • Built with ❤️</p>
-</footer>
+<script>
+// TODO: Replace with your backend API
+const API_BASE = "http://localhost:8000/api";
 
-<script src="day14.js"></script>
+async function loadDoctors() {
+  const res = await fetch(`${API_BASE}/doctors/`);
+  const doctors = await res.json();
+
+  const select = document.getElementById("doctorSelect");
+  select.innerHTML = doctors.map(
+    d => `<option value="${d.id}">${d.name} — ${d.specialization}</option>`
+  ).join("");
+}
+
+document.getElementById("appointmentForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const payload = {
+    patient_name: document.getElementById("patientName").value,
+    doctor_id: document.getElementById("doctorSelect").value,
+    appointment_date: document.getElementById("date").value,
+    appointment_time: document.getElementById("time").value,
+    reason: document.getElementById("reason").value
+  };
+
+  const res = await fetch(`${API_BASE}/appointments/`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  if (res.ok) {
+    successMsg.style.display = "block";
+    errorMsg.style.display = "none";
+    e.target.reset();
+  } else {
+    successMsg.style.display = "none";
+    errorMsg.style.display = "block";
+  }
+});
+
+loadDoctors();
+</script>
 </body>
 </html>

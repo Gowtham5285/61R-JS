@@ -1,8 +1,28 @@
 const products = [
   { name:"Naruto Action Figure", price:1299, category:"figure", badge:"Bestseller", img:"https://images-cdn.ubuy.co.in/66e6f7078093f7517854122c-s-h-figuarts-naruto-naruto-uzumaki-sage.jpg" },
+
   { name:"One Piece Hoodie", price:1899, category:"hoodie", badge:"Hot", img:"https://images-cdn.ubuy.co.in/6352d4518b1c7a4d65430c43-one-piece-hoodie-luffy-zoro-chopper.jpg" },
+
   { name:"Demon Slayer Poster", price:499, category:"poster", badge:"Trending", img:"https://rukminim2.flixcart.com/image/480/640/xif0q/poster/f/v/m/medium-all-characters-demon-slayer-framed-poster-anime-framed-original-imah2y8em38eawgx.jpeg?q=90" },
-  { name:"Gojo Keychain", price:299, category:"accessory", badge:"New", img:"https://images.meesho.com/images/products/411084027/aatmj_512.webp?width=512" }
+
+  { name:"Gojo Keychain", price:299, category:"accessory", badge:"New", img:"https://images.meesho.com/images/products/411084027/aatmj_512.webp?width=512" },
+
+
+  { name:"Itachi Uchiha Figure", price:1599, category:"figure", badge:"Fan Favorite", img:"https://i.imgur.com/6mJ8S0R.jpeg" },
+
+  { name:"Attack on Titan Hoodie", price:1999, category:"hoodie", badge:"Limited", img:"https://i.imgur.com/9p1VgYE.jpeg" },
+
+  { name:"Jujutsu Kaisen Poster", price:549, category:"poster", badge:"Hot", img:"https://i.imgur.com/0VJ2KSw.jpeg" },
+
+  { name:"Dragon Ball Z Keychain", price:349, category:"accessory", badge:"New", img:"https://i.imgur.com/Y5V4v3o.jpeg" },
+
+  { name:"Luffy Gear 5 Figure", price:2499, category:"figure", badge:"Premium", img:"https://i.imgur.com/7pYg9yZ.jpeg" },
+
+  { name:"Tokyo Revengers Hoodie", price:1799, category:"hoodie", badge:"Bestseller", img:"https://i.imgur.com/6w2bq8M.jpeg" },
+
+  { name:"Chainsaw Man Poster", price:499, category:"poster", badge:"Trending", img:"https://i.imgur.com/2O8Sxqg.jpeg" },
+
+  { name:"Nezuko Keychain", price:259, category:"accessory", badge:"Cute", img:"https://i.imgur.com/yYg2scq.jpeg" }
 ];
 
 let cart = [];
